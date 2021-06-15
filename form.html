@@ -1,60 +1,3435 @@
-<!doctype html>
-<html>
+
+<!DOCTYPE html>
+<html lang="pt">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>jQuery Tagator: Tag Input Demos</title>
-	
-	<style>
-		body {
-			font-family: 'Roboto';
-			margin: 0;
-			padding: 0;
-      background-color:#f7f7f7;
-		}
-		#wrapper {
-			padding: 15px;
-      margin:100px auto;
-      max-width:728px;
-		}
-		#input_tagator1 {
-			width: 300px;
-		}
-		#activate_tagator2 {
-			width: 300px;
-		}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Plus</title>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  
+  <link rel="stylesheet" href="../plugins/ekko-lightbox/ekko-lightbox.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Felipeomc/team/all.min.css">
+ 
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Felipeomc/team/adminlte.min.css">
+  
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Felipeomc/team/jquery.tagsinput-revisited.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		
-		.tagator_element *{box-sizing:border-box;-moz-box-sizing:border-box;text-decoration:none}#tagator_dimmer{background-color:rgba(0,0,0,.1);width:100%;height:100%;position:fixed;z-index:100}.tagator_element{border:1px solid #abadb3;border-radius:3px;box-sizing:border-box;background-color:#fff;display:inline-block;text-decoration:none}.tagator_element.options-visible{position:relative;z-index:101}.tagator_tags{display:inline}.tagator_tag{display:inline-block;background-color:#39f;border-radius:2px;color:#fff;padding:2px 20px 2px 4px;font-size:13px;margin:2px;position:relative;vertical-align:top}.tagator_tag_remove{display:inline-block;font-weight:bold;color:#fff;margin:0 0 0 5px;padding:6px 5px 4px 5px;cursor:pointer;font-size:11px;line-height:10px;vertical-align:top;border-radius:0 2px 2px 0;position:absolute;right:0;top:0;bottom:0}.tagator_tag_remove:hover{color:#000;background-color:#8cf}.tagator_input,.tagator_textlength{border:0;display:inline-block;margin:0;background-color:transparent;font-size:13px;outline:0;padding:4px 0 0 5px}.tagator_options{margin:0;padding:0;border:1px solid #7f9db9;border-radius:0 0 3px 3px;font-family:sans-serif;position:absolute;box-sizing:border-box;-moz-box-sizing:border-box;z-index:101;background-color:#fff;overflow:auto;max-height:250px;list-style:none;left:-1px;right:-1px}.tagator_element.options-hidden .tagator_options{display:none}.tagator_option{padding:5px;cursor:pointer;color:#000}.tagator_option.active{background-color:#39f;color:#fff}
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+
+
+
+
+
+<style>
+.tagsinput {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	background: #fff;
+	font-family: sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #556270;
+	padding: 5px 5px 0 5px;
+	border: 1px solid #e6e6e6;
+	border-radius: 2px;
+}
+
+.tagsinput.focus {
+	border-color: #e6e6e6;
+}
+
+.tagsinput * {
+	box-sizing: border-box;
+}
+
+.tagsinput .tag {
+	position: relative;
+	background: #556270;
+	display: block;
+	max-width: 100%;
+	word-wrap: break-word;
+	color: #fff;
+	padding: 5px 30px 5px 5px;
+	border-radius: 2px;
+	margin: 0 5px 5px 0;
+}
+
+.tagsinput .tag .tag-remove {
+	position: absolute;
+	background: none;
+	display: block;
+	width: 30px;
+	height: 30px;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	line-height: 30px;
+	padding: 0;
+	border: 0;
+}
+
+.tagsinput .tag .tag-remove:before,
+.tagsinput .tag .tag-remove:after {
+	background: white;
+	position: absolute;
+	display: block;
+	width: 10px;
+	height: 2px;
+	top: 14px;
+	left: 10px;
+	content: '';
+}
+
+.tagsinput .tag .tag-remove:before {
+	-webkit-transform: rotateZ(45deg);
+	transform: rotateZ(45deg);
+}
+
+.tagsinput .tag .tag-remove:after {
+	-webkit-transform: rotateZ(-45deg);
+	transform: rotateZ(-45deg);
+}
+
+.tagsinput div {
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	-ms-flex-positive: 1;
+	flex-grow: 1;
+}
+
+.tagsinput div input {
+	background: white;
+	display: inline;
+	width: 100%;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 5px;
+	border: 0 none;
+	margin: 0 5px 5px 0;
+}
+
+.tagsinput div input.error {
+	color: #ff6b6b;
+}
+
+.tagsinput div input::-ms-clear {
+	display: none;
+}
+
+.tagsinput div input::-webkit-input-placeholder {
+	color: #ccc;
+	opacity: 100%;
+}
+
+.tagsinput div input:-moz-placeholder {
+	color: #ccc;
+	opacity: 1.0;
+}
+
+.tagsinput div input::-moz-placeholder {
+	color: #ccc;
+	opacity: 1.0;
+}
+
+.tagsinput div input:-ms-input-placeholder {
+	color: #ccc;
+	opacity: 1.0;
+}
+
+
+
+.skill {
+  
+  border: 1px solid white;
+  padding: 0 6px;
+  margin-right: 2px;
+  color: white;
+  border-radius: 6px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+     
+
+.card-box {
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    background-color: #fff;
+	cursor:pointer;
+}
+
+
+.thumb-lg {
+    height: 70px;
+    width: 70px;
+}
+.img-thumbnail {
+    padding: .10rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .10rem;
+    max-width: 90%;
+    height: auto;
+}
+
+
+.btn-rounded {
+
+    border-radius: 1em;
+	font-size:13px;
+}
+.text-muted {
+    color: #98a6ad!important;
+}
+
+.porcentag {
+			  float:right;   
+			  color: black;
+			  
+			  
+			  
+			   margin-left: 15px;
+				
+				
+				
+				font-size: 16px;
+				line-height: 10px;
+				
+			 
+			}
+			
+			.tagator_element *{box-sizing:border-box;-moz-box-sizing:border-box;text-decoration:none}#tagator_dimmer{background-color:rgba(0,0,0,.1);width:100%;height:100%;position:fixed;z-index:100}.tagator_element{border:1px solid #abadb3;border-radius:3px;box-sizing:border-box;background-color:#fff;display:inline-block;text-decoration:none}.tagator_element.options-visible{position:relative;z-index:101}.tagator_tags{display:inline}.tagator_tag{display:inline-block;background-color:#39f;border-radius:2px;color:#fff;padding:2px 20px 2px 4px;font-size:13px;margin:2px;position:relative;vertical-align:top}.tagator_tag_remove{display:inline-block;font-weight:bold;color:#fff;margin:0 0 0 5px;padding:6px 5px 4px 5px;cursor:pointer;font-size:11px;line-height:10px;vertical-align:top;border-radius:0 2px 2px 0;position:absolute;right:0;top:0;bottom:0}.tagator_tag_remove:hover{color:#000;background-color:#8cf}.tagator_input,.tagator_textlength{border:0;display:inline-block;margin:0;background-color:transparent;font-size:13px;outline:0;padding:4px 0 0 5px}.tagator_options{margin:0;padding:0;border:1px solid #7f9db9;border-radius:0 0 3px 3px;font-family:sans-serif;position:absolute;box-sizing:border-box;-moz-box-sizing:border-box;z-index:101;background-color:#fff;overflow:auto;max-height:250px;list-style:none;left:-1px;right:-1px}.tagator_element.options-hidden .tagator_options{display:none}.tagator_option{padding:5px;cursor:pointer;color:#000}.tagator_option.active{background-color:#39f;color:#fff}
 		
-		
-	</style>
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	
-	
+        </style>
+  
+  
+  
 </head>
-<body>
+
+<body class="hold-transition sidebar-mini">
+
+
+
+
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../teamplus2.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="form.html" class="nav-link">Form teams</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+ 
+
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="../teamplus2.html" class="brand-link">
+      <img src="https://as1.ftcdn.net/jpg/02/18/23/06/500_F_218230681_UrFaxawyNMGAN6lRIAk99or1eT9VxMCI.jpg" alt=" Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Team Plus</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Adam (Manager)</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+		<li class="nav-item">
+            <a href="people.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                People
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a href="projects.html" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Projects
+                <span class="right badge badge-danger"></span>
+              </p>
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a href="form.html" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+               Form teams
+                <span class="badge badge-info right">+</span>
+              </p>
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		<li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+
+
+
+<script>
+
+
+
+$(document).ready(function() {
+
+
+
+
+
+
+
+
+   
+				var a=1;
+				var	porcentagem_kiran;
+				var porcentagem_fred;
+				var porcentagem_alice ;
+				var porcentagem_dave;
+					
+				var porcentagem_bob;
+				var porcentagem_marcos;
+				var porcentagem_julia;
+				var porcentagem_nick;
+				
+				var porcentagem_sugestao2;
+				var porcentagem_sugestao1;
+				
+				var kiran_sugest1=1;
+				var fred_sugest1=1;
+				var alice_sugest1=1;
+				var dave_sugest1=1;
+				
+				var bob_sugest1=1;
+				var marcos_sugest1=1;
+				var julia_sugest1=1;
+				var nick_sugest1=1;
+				
+				var kiran2_sugest1=1;
+				var fred2_sugest1=1;
+				var alice2_sugest1=1;
+				var dave2_sugest1=1;
+				
+				var bob2_sugest1=1;
+				var marcos2_sugest1=1;
+				var julia2_sugest1=1;
+				var nick2_sugest1=1;
+				
+				
+				var equipe1 = [];
+					var porc_equipe1 = [];
+					
+					var equipe2 = [];
+					var porc_equipe2 = [];
+					
+					
+				
+				$( "#botao" ).click(function() {
+						
+						 $("#kiran").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#kiran2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#fred").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#fred2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#alice").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#alice2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						$("#dave").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#dave2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						$("#bob").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#bob2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						$("#marcos").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#marcos2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						$("#julia").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#julia2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						$("#nick").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+						 $("#nick2").animate({
+								top:"0",
+								left:"0"
+						}, 200);
+				
+				porcentagem_kiran=0;
+				porcentagem_sugestao2=0;
+				porcentagem_sugestao1=0;
+				
+				equipe1 = [];
+				porc_equipe1 = [];
+					
+				equipe2 = [];
+				porc_equipe2 = [];
+				
+						var ig = $('#entrada').val();
+						alert("Tags: "+ig);
+						$('#txtdigitado').val(ig+' \n');
+						
+						
+					var qtd_tags_kiran = 0;
+					var qtd_tags_fred = 0;
+					var qtd_tags_alice = 0;
+					var qtd_tags_dave = 0;
+					
+					porcentagem_kiran = 0;
+					porcentagem_fred = 0;
+					porcentagem_alice = 0;
+					porcentagem_dave = 0;
+					
+					var qtd_tags_bob = 0;
+					var qtd_tags_marcos = 0;
+					var qtd_tags_julia = 0;
+					var qtd_tags_nick = 0;
+					
+					porcentagem_bob = 0;
+					porcentagem_marcos = 0;
+					porcentagem_julia = 0;
+					porcentagem_nick = 0;
+					
+					
+					var tags_kiran = ["web","WEB", "Web", "mvc", "MVC","Java","JAVA", "java"];	
+					var tags_fred = ["Mobile","MOBILE", "mobile", "mvc", "MVC","Java","JAVA", "java"];
+					var tags_alice = ["Javascript","javascript", "JAVASCRIPT", "mvc", "MVC","web","WEB", "Web"];
+					var tags_dave = ["spring","Spring", "SPRING", "ANGULAR", "Angular","angular","JAVA","java","Java"];	
+
+
+					var tags_bob = ["spring","Spring", "SPRING", "mvc", "MVC","Java","JAVA", "java"];	
+					var tags_marcos = ["web","WEB", "Web", "mvc", "MVC","Javascript","javascript", "JAVASCRIPT"];
+					var tags_julia = ["Javascript","javascript", "JAVASCRIPT", "Java","JAVA", "java","web","WEB", "Web"];
+					var tags_nick = ["spring","Spring", "SPRING", "ANGULAR", "Angular","angular","mvc", "MVC", "Mvc"];	
+					
+					var lines = $('#txtdigitado').val().split(/,/);
+					var texts = [];
+					
+					
+					$("#kiran").css("display", "none");
+					$("#fred").css("display", "none");
+					$("#alice").css("display", "none");
+					$("#dave").css("display", "none");
+					$("#bob").css("display", "none");
+					$("#marcos").css("display", "none");
+					$("#julia").css("display", "none");
+					$("#nick").css("display", "none");
+					
+					
+					
+					
+					
+					$("#kiran2").css("display", "none");
+					$("#fred2").css("display", "none");
+					$("#alice2").css("display", "none");
+					$("#dave2").css("display", "none");
+					$("#bob2").css("display", "none");
+					$("#marcos2").css("display", "none");
+					$("#julia2").css("display", "none");
+					$("#nick2").css("display", "none");
+					
+					for (var i=0; i < lines.length; i++) {
+					// coloca as tags no array TEXTS PARA TODOS.
+						if (/\S/.test(lines[i])) {
+							texts.push($.trim(lines[i]));
+						}
+					}
+
+				
+					
+					
+					// verifica se existem as tags COMPATIVEIS COM KIRAN e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_kiran.length; i++) {
+							var hab=tags_kiran[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_kiran += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_kiran = ((qtd_tags_kiran*100)/texts.length);
+					porcentagem_kiran = parseFloat(porcentagem_kiran.toFixed(1));
+					
+					$("#percentual_kiran").html(porcentagem_kiran+'%');
+					$("#percentual_kiran2").html(porcentagem_kiran+'%');	
+					
+					
+					// verifica se existem as tags COMPATIVEIS COM FRED e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_fred.length; i++) {
+							var hab=tags_fred[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_fred += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_fred = ((qtd_tags_fred*100)/texts.length);
+					porcentagem_fred = parseFloat(porcentagem_fred.toFixed(1));
+					
+					$("#percentual_fred").html(porcentagem_fred+'%');
+					$("#percentual_fred2").html(porcentagem_fred+'%');
+						
+					
+					// verifica se existem as tags COMPATIVEIS COM ALICE e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_alice.length; i++) {
+							var hab=tags_alice[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_alice += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_alice = ((qtd_tags_alice*100)/texts.length);
+					porcentagem_alice = parseFloat(porcentagem_alice.toFixed(1));
+					
+					$("#percentual_alice").html(porcentagem_alice+'%');
+					$("#percentual_alice2").html(porcentagem_alice+'%');
+					
+					// verifica se existem as tags COMPATIVEIS COM DAVE e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_dave.length; i++) {
+							var hab=tags_dave[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_dave += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_dave = ((qtd_tags_dave*100)/texts.length);
+					porcentagem_dave = parseFloat(porcentagem_dave.toFixed(1));
+					
+					$("#percentual_dave").html(porcentagem_dave+'%');	
+					$("#percentual_dave2").html(porcentagem_dave+'%');
+					
+					// verifica se existem as tags COMPATIVEIS COM BOB e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_bob.length; i++) {
+							var hab=tags_bob[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_bob += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_bob = ((qtd_tags_bob*100)/texts.length);
+					porcentagem_bob = parseFloat(porcentagem_bob.toFixed(1));
+					
+					$("#percentual_bob").html(porcentagem_bob+'%');	
+					$("#percentual_bob2").html(porcentagem_bob+'%');
+					
+					// verifica se existem as tags COMPATIVEIS COM MARCOS e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_marcos.length; i++) {
+							var hab=tags_marcos[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_marcos += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_marcos = ((qtd_tags_marcos*100)/texts.length);
+					porcentagem_marcos = parseFloat(porcentagem_marcos.toFixed(1));
+					
+					$("#percentual_marcos").html(porcentagem_marcos+'%');	
+						$("#percentual_marcos2").html(porcentagem_marcos+'%');	
+					
+					// verifica se existem as tags COMPATIVEIS COM JULIA e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_julia.length; i++) {
+							var hab=tags_julia[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_julia += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_julia = ((qtd_tags_julia*100)/texts.length);
+					porcentagem_julia = parseFloat(porcentagem_julia.toFixed(1));
+					
+					$("#percentual_julia").html(porcentagem_julia+'%');	
+					$("#percentual_julia2").html(porcentagem_julia+'%');	
+					
+					
+					// verifica se existem as tags COMPATIVEIS COM NICK e ativa cada uma.
+					for (var j=0; j < texts.length; j++) {
+							var tag = texts[j];
+							
+						for (var i=0; i < tags_nick.length; i++) {
+							var hab=tags_nick[i];
+							
+							if( tag == hab ){
+								 
+								 qtd_tags_nick += 1;
+								  
+								 
+							}
+											
+						}
+					}
+					
+					porcentagem_nick = ((qtd_tags_nick*100)/texts.length);
+					porcentagem_nick = parseFloat(porcentagem_nick.toFixed(1));
+					$("#percentual_nick").html(porcentagem_nick+'%');
+					$("#percentual_nick2").html(porcentagem_nick+'%');
+					
+					
+					
+					
+					
+					var qtd_devmaster = $( "#DevMast" ).val();
+					var qtd_devmiddle = $( "#DevMidd" ).val();
+					var qtd_devsenior = $( "#DevSeni" ).val();
+					var qtd_devjunior = $( "#DevJuni" ).val();
+					
+					var kiranpode=0;
+					var fredpode=0;
+					var alicepode=0;
+					var davepode=0;
+					
+					
+					var qtd_engmaster = $( "#EngMast" ).val();
+					var qtd_engmiddle = $( "#EngMidd" ).val();
+					var qtd_engsenior = $( "#EngSeni" ).val();
+					var qtd_engjunior = $( "#EngJuni" ).val();
+					
+					var bobpode=0;
+					var marcospode=0;
+					var juliapode=0;
+					var nickpode=0;
+					
+					var tamanho=0;
+					
+					
+					if(qtd_devmaster>=1){
+						tamanho=tamanho+1;
+					}
+					if(qtd_devmiddle>=1){
+						tamanho=tamanho+1;
+					}
+					if(qtd_devsenior>=1){
+						tamanho=tamanho+1;
+					}
+					if(qtd_devjunior>=1){
+						tamanho=tamanho+1;
+					}
+					
+					
+					
+					if((tamanho>=1) && (qtd_tags_kiran>0) && (qtd_devmaster>=1)){
+						kiranpode=1;
+					}
+					if((tamanho==0) && (qtd_tags_kiran==0) && (qtd_devmaster==0)) {
+						kiranpode=0;
+						$("#kiran").css("display", "none");
+					}
+					
+					
+					if((tamanho>=1) && (qtd_tags_fred>0) && (qtd_devmiddle>=1)){
+						fredpode=1;
+					}
+					if((tamanho==0) && (qtd_tags_fred==0)&& (qtd_devmiddle==0)) {
+						fredpode=0;
+						$("#fred").css("display", "none");
+					}
+					
+					
+					if((tamanho>=1) && (qtd_tags_alice>0) && (qtd_devsenior>=1)){
+						alicepode=1;
+					}
+					if((tamanho==0) && (qtd_tags_alice==0) && (qtd_devsenior==0)) {
+						alicepode=0;
+						$("#alice").css("display", "none");
+					}
+					
+					
+					if((tamanho>=1) && (qtd_tags_dave>0) && (qtd_devjunior>=1)){
+						davepode=1;
+					}
+					if((tamanho==0) && (qtd_tags_dave==0)  && (qtd_devjunior==0)) {
+						davepode=0;
+						$("#dave").css("display", "none");
+					}
+					
+					
+					if((tamanho>=1) && (qtd_tags_bob>0)  && (qtd_devmaster>=1)){
+						bobpode=1;
+					}
+					if((tamanho==0) && (qtd_tags_bob==0) && (qtd_devmaster==0)) {
+						bobpode=0;
+						$("#bob").css("display", "none");
+					}
+					
+					if((tamanho>=1) && (qtd_tags_marcos>0) && (qtd_devmiddle>=1) ){
+						marcospode=1;
+					}
+					if((tamanho==0) && (qtd_tags_marcos==0) && (qtd_devmiddle==0)) {
+						marcospode=0;
+						$("#marcos").css("display", "none");
+					}
+					
+					
+					if((tamanho>=1) && (qtd_tags_julia>0) && (qtd_devsenior>=1)){
+						juliapode=1;
+					}
+					if((tamanho==0) && (qtd_tags_julia==0)  && (qtd_devsenior==0)) {
+						juliapode=0;
+						$("#julia").css("display", "none");
+					}
+					
+					//alert("qtd_devjunior: "+qtd_devjunior);
+					if((tamanho>=1) && (qtd_tags_nick>0) && (qtd_devjunior>=1)){
+						nickpode=1;
+					}
+					if((tamanho==0) && (qtd_tags_nick==0) && (qtd_devjunior==0)) {
+						nickpode=0;
+						$("#nick").css("display", "none");
+					}
+					
+					//alert("tamnho é: "+tamanho);
+					
+					
+					
+					
+					if ((porcentagem_kiran>0) && (kiranpode==1)){
+							equipe1.push("kiran");
+							porc_equipe1.push(porcentagem_kiran);
+					}
+					if ((porcentagem_fred>0) && (fredpode==1)){
+							equipe1.push("fred");
+							porc_equipe1.push(porcentagem_fred);
+					}	
+					if ((porcentagem_alice>0) && (alicepode==1)){
+							equipe1.push("alice");
+							porc_equipe1.push(porcentagem_alice);
+					}	
+					if ((porcentagem_dave>0) && (davepode==1)){
+							equipe1.push("dave");
+							porc_equipe1.push(porcentagem_dave);
+					}
+					
+					
+					
+					
+					if ((porcentagem_bob>0) && (bobpode==1)){
+							equipe1.push("bob");
+							porc_equipe1.push(porcentagem_bob);
+					}
+					if ((porcentagem_marcos>0) && (marcospode==1)){
+							equipe1.push("marcos");
+							porc_equipe1.push(porcentagem_marcos);
+					}	
+					if ((porcentagem_julia>0) && (juliapode==1)){
+							equipe1.push("julia");
+							porc_equipe1.push(porcentagem_julia);
+					}	
+					if ((porcentagem_nick>0) && (nickpode==1)){
+							equipe1.push("nick");
+							porc_equipe1.push(porcentagem_nick);
+					}
+					
+					
+			
+					
+					var aux=0;
+					var pessoa=0;
+					
+					for (var i=0; i<porc_equipe1.length; i++){
+						
+						for (var j=0; j<porc_equipe1.length; j++){
+							
+							if ((porc_equipe1[i] > porc_equipe1[j])){
+							
+								
+								aux = porc_equipe1[j];
+								pessoa = equipe1[j];
+								
+								porc_equipe1[j] = porc_equipe1[i];
+								equipe1[j] = equipe1[i];
+								
+								porc_equipe1[i] = aux;
+								equipe1[i] = pessoa;
+								
+								
+								
+								
+							}	
+								
+							
+							
+						}
+						
+						
+					}
+					//alert("equipe 1 antes: "+equipe1);
+					//alert("equipe 2 antes: "+equipe2);
+					<!--coloca o extra do tamanho na na equipe 2-->
+					
+					var auxi=0;
+					auxi=equipe1.length - tamanho;
+					//alert("auxi: "+auxi);
+					
+					for (var j=0; j<auxi; j++){
+						
+						
+						equipe2[j] = equipe1[tamanho];
+						porc_equipe2[j] = porc_equipe1[tamanho];
+						
+						equipe1.splice(tamanho, 1);
+						porc_equipe1.splice(tamanho, 1);
+						
+					}
+					
+					//alert("equipe 1: "+equipe1);
+					//alert("equipe 2: "+equipe2);
+					//alert("Porcentagem equipe 2: "+porc_equipe2);
+					
+					
+					
+				
+					
+					for ( var i=0 ; i <= equipe1.length; i++){
+							
+							if ((equipe1[i]=='kiran') && (kiranpode==1)){
+								$("#kiran").css("display", "block");
+							}
+							
+							if ((equipe1[i]=='fred') && (fredpode==1)){
+								$("#fred").css("display", "block");
+							}
+							
+							if ((equipe1[i]=='alice') && (alicepode==1)){
+								$("#alice").css("display", "block");
+							}
+							
+							if ((equipe1[i]=='dave') && (davepode==1)){
+								$("#dave").css("display", "block");
+							}
+							
+							if ((equipe1[i]=='nick') && (nickpode==1)){
+								$("#nick").css("display", "block");
+							}
+							
+							
+							if ((equipe1[i]=='bob') && (bobpode==1)){
+								$("#bob").css("display", "block");
+								
+							}
+							
+							if ((equipe1[i]=='marcos') && (marcospode==1)){
+								$("#marcos").css("display", "block");
+							}
+							
+							if ((equipe1[i]=='julia') && (juliapode==1)){
+								$("#julia").css("display", "block");
+							}
+							
+							if ((equipe1[i]=='nick') && (nickpode==1)){
+								$("#nick").css("display", "block");
+							}
+					}
+					
+					porcentagem_sugestao1 = 0;
+					
+					
+					for ( var i=0 ; i <= equipe1.length; i++){
+						
+						if ((equipe1[i]=='kiran') && ($('#kiran').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_kiran);
+						}
+						
+						if ((equipe1[i]=='fred') && ($('#fred').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_fred);
+						}
+						
+						if ((equipe1[i]=='alice') && ($('#alice').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_alice);
+						}
+						
+						if ((equipe1[i]=='dave') && ($('#dave').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_dave);
+						}
+					
+						
+						if ((equipe1[i]=='bob') && ($('#bob').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_bob);
+						}
+						
+						if ((equipe1[i]=='marcos') && ($('#marcos').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_marcos);
+						}
+						
+						if ((equipe1[i]=='julia') && ($('#julia').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_julia);
+						}
+						
+						if ((equipe1[i]=='nick') && ($('#nick').css('display') == 'block')){
+							porcentagem_sugestao1 = (porcentagem_sugestao1 + porcentagem_nick);
+						}
+					}
+					
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+						
+					
+					
+					for ( var i=0 ; i <= equipe2.length; i++){
+					
+							if ((equipe2[i]=='kiran') && (kiranpode==1)){
+								$("#kiran2").css("display", "block");
+							}
+							
+							if ((equipe2[i]=='fred') && (fredpode==1)){
+								$("#fred2").css("display", "block");
+							}
+							
+							if ((equipe2[i]=='alice') && (alicepode==1)){
+								$("#alice2").css("display", "block");
+							}
+							
+							if ((equipe2[i]=='dave') && (davepode==1)){
+								$("#dave2").css("display", "block");
+							}
+							
+							
+							if ((equipe2[i]=='bob') && (bobpode==1)){
+								$("#bob2").css("display", "block");
+								
+							}
+							
+							if ((equipe2[i]=='marcos') && (marcospode==1)){
+								$("#marcos2").css("display", "block");
+							}
+							
+							if ((equipe2[i]=='julia') && (juliapode==1)){
+								$("#julia2").css("display", "block");
+							}
+							
+							if ((equipe2[i]=='nick') && (nickpode==1)){
+								$("#nick2").css("display", "block");
+							}
+					
+					}
+					
 	
-    <div class="jquery-script-ads">
+					
+					porcentagem_sugestao2 = 0;
+					
+					
+					for ( var i=0 ; i <= equipe2.length; i++){
+						
+						if ((equipe2[i]=='kiran') && ($('#kiran2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_kiran);
+						}
+						
+						if ((equipe2[i]=='fred') && ($('#fred2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_fred);
+						}
+						
+						if ((equipe2[i]=='alice') && ($('#alice2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_alice);
+						}
+						
+						if ((equipe2[i]=='dave') && ($('#dave2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_dave);
+						}
+					
+						
+						if ((equipe2[i]=='bob') && ($('#bob2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_bob);
+						}
+						
+						if ((equipe2[i]=='marcos') && ($('#marcos2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_marcos);
+						}
+						
+						if ((equipe2[i]=='julia') && ($('#julia2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_julia);
+						}
+						
+						if ((equipe2[i]=='nick') && ($('#nick2').css('display') == 'block')){
+							porcentagem_sugestao2 = (porcentagem_sugestao2 + porcentagem_nick);
+						}
+					}
+					
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+						
+					
+				
+					
+					
+					
+					$("#sugestao1").css("display", "block");
+					$("#sugestao2").css("display", "block");
+				});		
+				
 
-
-		<h3>
-			Normal initialization
-		</h3>
-
-		<input id="input_tagator1" name="input_tagator1" value="jQuery,Script,Net" placeholder="Please input some tags">
-		<input value="activate tagator" id="activate_tagator1" type="button">
-		<br>
-		<br>
-		<h3>
-			Markup initialization
-		</h3>
 		
-		<input id="activate_tagator2" type="text" class="tagator" value="jQuery,Script,Net" data-tagator-show-all-options-on-focus="true" data-tagator-autocomplete="['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh']">
+		
+		
+		$("#kiran").draggable();
+		$("#kiran2").draggable();
+		
+		$("#fred").draggable();
+		$("#fred2").draggable();
+		
+		$("#alice").draggable();
+		$("#alice2").draggable();
+		
+		$("#dave").draggable();
+		$("#dave2").draggable();
+		
+		//---------------------//
+		
+		$("#bob").draggable();
+		$("#bob2").draggable();
+		
+		$("#marcos").draggable();
+		$("#marcos2").draggable();
+		
+		$("#julia").draggable();
+		$("#julia2").draggable();
+		
+		$("#nick").draggable();
+		$("#nick2").draggable();
+		
+		
+		
+		
+        $("#sugest2").droppable({
+		
+            drop: function(event, ui) {
+				//---------------Verifica se kiran foi movido para sugestao 2----------------------//
+				if (($("#kiran").is('.ui-draggable-dragging')) && (kiran_sugest1==1) ){
+					$("#kiran").css("z-index", a++);
+					kiran_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='kiran'){
+							equipe2.push('kiran');
+							porc_equipe2.push(porcentagem_kiran);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				//---------------Verifica se fred foi movido para sugestao 2----------------------//
+				if (($("#fred").is('.ui-draggable-dragging')) && (fred_sugest1==1) ){
+					$("#fred").css("z-index", a++);
+					fred_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='fred'){
+							equipe2.push('fred');
+							porc_equipe2.push(porcentagem_fred);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				//---------------Verifica se ALICE foi movido para sugestao 2----------------------//
+				if (($("#alice").is('.ui-draggable-dragging')) && (alice_sugest1==1) ){
+					$("#alice").css("z-index", a++);
+					alice_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='alice'){
+							equipe2.push('alice');
+							porc_equipe2.push(porcentagem_alice);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				
+				//---------------Verifica se DAVE foi movido para sugestao 2----------------------//
+				if (($("#dave").is('.ui-draggable-dragging')) && (dave_sugest1==1) ){
+					$("#dave").css("z-index", a++);
+					dave_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='dave'){
+							equipe2.push('dave');
+							porc_equipe2.push(porcentagem_dave);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				//-------------------------------------------------------------------//
+				//-------------------------------------------------------------------//
+				//---------------Verifica se BOB foi movido para sugestao 2----------------------//
+				if (($("#bob").is('.ui-draggable-dragging')) && (bob_sugest1==1) ){
+					$("#bob").css("z-index", a++);
+					bob_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='bob'){
+							equipe2.push('bob');
+							porc_equipe2.push(porcentagem_bob);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//		
+				//---------------Verifica se MARCOS foi movido para sugestao 2----------------------//
+				if (($("#marcos").is('.ui-draggable-dragging')) && (marcos_sugest1==1) ){
+					$("#marcos").css("z-index", a++);
+					marcos_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='marcos'){
+							equipe2.push('marcos');
+							porc_equipe2.push(porcentagem_marcos);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//				
+				//---------------Verifica se JULIA foi movido para sugestao 2----------------------//
+				if (($("#julia").is('.ui-draggable-dragging')) && (julia_sugest1==1) ){
+					$("#julia").css("z-index", a++);
+					julia_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='julia'){
+							equipe2.push('julia');
+							porc_equipe2.push(porcentagem_julia);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//			
+				//---------------Verifica se NICK foi movido para sugestao 2-------------------//
+				if (($("#nick").is('.ui-draggable-dragging')) && (nick_sugest1==1) ){
+					$("#nick").css("z-index", a++);
+					nick_sugest1=0;
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='nick'){
+							equipe2.push('nick');
+							porc_equipe2.push(porcentagem_nick);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//				
+				
+            },
+            over: function(event, ui) {
+			
+            },
+            out: function(event, ui) {
+				//-----------------verifica se kiran voltou para sugestao 1 -----------------//
+				if (($("#kiran").is('.ui-draggable-dragging')) && (kiran_sugest1==0) ){
+					$("#kiran").css("z-index", a++);
+					kiran_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='kiran'){
+							equipe1.push('kiran');
+							porc_equipe1.push(porcentagem_kiran);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se fred voltou para sugestao 1 -----------------//
+				if (($("#fred").is('.ui-draggable-dragging')) && (fred_sugest1==0) ){
+					$("#fred").css("z-index", a++);
+					fred_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='fred'){
+							equipe1.push('fred');
+							porc_equipe1.push(porcentagem_fred);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se alice voltou para sugestao 1 -----------------//
+				if (($("#alice").is('.ui-draggable-dragging')) && (alice_sugest1==0) ){
+					$("#alice").css("z-index", a++);
+					alice_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='alice'){
+							equipe1.push('alice');
+							porc_equipe1.push(porcentagem_alice);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				
+				//-----------------verifica se DAVE voltou para sugestao 1 -----------------//
+				if (($("#dave").is('.ui-draggable-dragging')) && (dave_sugest1==0) ){
+						$("#dave").css("z-index", a++);
+						dave_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='dave'){
+							equipe1.push('dave');
+							porc_equipe1.push(porcentagem_dave);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//--------------------------------------------------------------------//
+				//--------------------------------------------------------------------//
+				//-----------------verifica se bob voltou para sugestao 1 -----------------//
+				if (($("#bob").is('.ui-draggable-dragging')) && (bob_sugest1==0) ){
+					$("#bob").css("z-index", a++);
+					bob_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='bob'){
+							equipe1.push('bob');
+							porc_equipe1.push(porcentagem_bob);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se MARCOS voltou para sugestao 1 -----------------//
+				if (($("#marcos").is('.ui-draggable-dragging')) && (marcos_sugest1==0) ){
+					$("#marcos").css("z-index", a++);
+					marcos_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='marcos'){
+							equipe1.push('marcos');
+							porc_equipe1.push(porcentagem_marcos);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se julia voltou para sugestao 1 -----------------//
+				if (($("#julia").is('.ui-draggable-dragging')) && (julia_sugest1==0) ){
+					$("#julia").css("z-index", a++);
+					julia_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='julia'){
+							equipe1.push('julia');
+							porc_equipe1.push(porcentagem_julia);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se NICK voltou para sugestao 1 -----------------//
+				if (($("#nick").is('.ui-draggable-dragging')) && (nick_sugest1==0) ){
+					$("#nick").css("z-index", a++);
+					nick_sugest1=1;	
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='nick'){
+							equipe1.push('nick');
+							porc_equipe1.push(porcentagem_nick);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+			}
+			
+			 });
+         
 
+				 
+				
+            //---------------- ARRASTAVEIS 2 da SUGESTAO 2 p sugest 1 --------------------------------//
+			
+       $("#sugest1").droppable({
+		
+            drop: function(event, ui) {
+				//---------------Verifica se kiran foi movido para sugestao 1-----------------//
+				if (($("#kiran2").is('.ui-draggable-dragging')) && (kiran2_sugest1==1) ){
+					$("#kiran2").css("z-index", a++);
+					kiran2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='kiran'){
+							equipe1.push('kiran');
+							porc_equipe1.push(porcentagem_kiran);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				//---------------Verifica se fred foi movido para sugestao 1------------------//
+				if (($("#fred2").is('.ui-draggable-dragging')) && (fred2_sugest1==1) ){
+					$("#fred2").css("z-index", a++);
+					fred2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='fred'){
+							equipe1.push('fred');
+							porc_equipe1.push(porcentagem_fred);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				//---------------Verifica se ALICE foi movido para sugestao 1-------------//
+				if (($("#alice2").is('.ui-draggable-dragging')) && (alice2_sugest1==1) ){
+					$("#alice2").css("z-index", a++);
+					alice2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='alice'){
+							equipe1.push('alice');
+							porc_equipe1.push(porcentagem_alice);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				
+				//---------------Verifica se DAVE foi movido para sugestao 2----------------------//
+				if (($("#dave2").is('.ui-draggable-dragging')) && (dave2_sugest1==1) ){
+					$("#dave2").css("z-index", a++);
+					dave2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='dave'){
+							equipe1.push('dave');
+							porc_equipe1.push(porcentagem_dave);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//
+				//-------------------------------------------------------------------//
+				//-------------------------------------------------------------------//
+				//---------------Verifica se BOB foi movido para sugestao 2----------------------//
+				if (($("#bob2").is('.ui-draggable-dragging')) && (bob2_sugest1==1) ){
+					$("#bob2").css("z-index", a++);
+					bob2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='bob'){
+							equipe1.push('bob');
+							porc_equipe1.push(porcentagem_bob);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//		
+				//---------------Verifica se MARCOS foi movido para sugestao 2----------------------//
+				if (($("#marcos2").is('.ui-draggable-dragging')) && (marcos2_sugest1==1) ){
+					$("#marcos2").css("z-index", a++);
+					marcos2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='marcos'){
+							equipe1.push('marcos');
+							porc_equipe1.push(porcentagem_marcos);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//				
+				//---------------Verifica se JULIA foi movido para sugestao 2----------------------//
+				if (($("#julia2").is('.ui-draggable-dragging')) && (julia2_sugest1==1) ){
+					$("#julia2").css("z-index", a++);
+					julia2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='julia'){
+							equipe1.push('julia');
+							porc_equipe1.push(porcentagem_julia);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//			
+				//---------------Verifica se NICK foi movido para sugestao 2----------------------//
+				if (($("#nick2").is('.ui-draggable-dragging')) && (nick2_sugest1==1) ){
+					$("#nick2").css("z-index", a++);
+					nick2_sugest1=0;
+					for (var j=0; j<equipe2.length; j++){
+						
+						if(equipe2[j]=='nick'){
+							equipe1.push('nick');
+							porc_equipe1.push(porcentagem_nick);
+							
+							equipe2.splice(j, 1);
+							porc_equipe2.splice(j, 1);
+						}
+						
+					}
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+						
+						
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//-------------------------------------------------------------------//				
+				
+            },
+            over: function(event, ui) {
+			
+            },
+            out: function(event, ui) {
+				//-----------------verifica se kiran2 voltou para sugestao 2 -----------------//
+				if (($("#kiran2").is('.ui-draggable-dragging')) && (kiran2_sugest1==0) ){
+					$("#kiran2").css("z-index", a++);	
+					kiran2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='kiran'){
+							equipe2.push('kiran');
+							porc_equipe2.push(porcentagem_kiran);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se fred2 voltou para sugestao 2 -----------------//
+				if (($("#fred2").is('.ui-draggable-dragging')) && (fred2_sugest1==0) ){
+					$("#fred2").css("z-index", a++);	
+					fred2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='fred'){
+							equipe2.push('fred');
+							porc_equipe2.push(porcentagem_fred);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se alice2 voltou para sugestao 2 -----------------//
+				if (($("#alice2").is('.ui-draggable-dragging')) && (alice2_sugest1==0) ){
+					$("#alice2").css("z-index", a++);	
+					alice2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='alice'){
+							equipe2.push('alice');
+							porc_equipe2.push(porcentagem_alice);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				
+				//-----------------verifica se DAVE2 voltou para sugestao 2 -----------------//
+				if (($("#dave2").is('.ui-draggable-dragging')) && (dave2_sugest1==0) ){
+					$("#dave2").css("z-index", a++);
+					dave2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='dave'){
+							equipe2.push('dave');
+							porc_equipe2.push(porcentagem_dave);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//--------------------------------------------------------------------//
+				//--------------------------------------------------------------------//
+				//-----------------verifica se bob2 voltou para sugestao 2 -----------------//
+				if (($("#bob2").is('.ui-draggable-dragging')) && (bob2_sugest1==0) ){
+					$("#bob2").css("z-index", a++);
+					bob2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='bob'){
+							equipe2.push('bob');
+							porc_equipe2.push(porcentagem_bob);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se MARCOS2 voltou para sugestao 2 -----------------//
+				if (($("#marcos2").is('.ui-draggable-dragging')) && (marcos2_sugest1==0) ){
+					$("#marcos2").css("z-index", a++);
+					marcos2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='marcos'){
+							equipe2.push('marcos');
+							porc_equipe2.push(porcentagem_marcos);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se julia 2voltou para sugestao 2 -----------------//
+				if (($("#julia2").is('.ui-draggable-dragging')) && (julia2_sugest1==0) ){
+					$("#julia2").css("z-index", a++);
+					julia2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='julia'){
+							equipe2.push('julia');
+							porc_equipe2.push(porcentagem_julia);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+				//-----------------verifica se NICK voltou para sugestao 2 -----------------//
+				if (($("#nick2").is('.ui-draggable-dragging')) && (nick2_sugest1==0) ){
+					$("#nick2").css("z-index", a++);
+					nick2_sugest1=1;	
+					for (var j=0; j<equipe1.length; j++){
+						
+						if(equipe1[j]=='nick'){
+							equipe2.push('nick');
+							porc_equipe2.push(porcentagem_nick);
+							
+							equipe1.splice(j, 1);
+							porc_equipe1.splice(j, 1);
+						}
+						
+					}
+								
+					
+					porcentagem_sugestao1=0;
+					
+					for (var i=0; i<equipe1.length;i++){
+						
+						porcentagem_sugestao1 = porcentagem_sugestao1 + porc_equipe1[i];
+						
+						
+					}
+					porcentagem_sugestao1 = (porcentagem_sugestao1/equipe1.length);
+					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
+					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
+					
+					
+					porcentagem_sugestao2=0;
+					
+					for (var i=0; i<equipe2.length;i++){
+						
+						porcentagem_sugestao2 = porcentagem_sugestao2 + porc_equipe2[i];
+					}
+					porcentagem_sugestao2 = (porcentagem_sugestao2/equipe2.length);
+					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
+					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
+				}
+				//--------------------------------------------------------------------//
+			}
+			
+			 });
+		
+		
+		
+			
+});
+			
+				
+</script>  
+  
+<div class="content-wrapper" style="display:block"  id="pg1">
+    <!-- Content Header (Page header) -->   
+<section class="content-header " >
+	<div class="form-row elevation-1">
+	<div class="row">
+			  <!--primeira coluna-->
+			  <div class="col-auto"></div>
+				<div class="col">
+				
+					<legend class=" col-form-label ">Search tags:</legend>
+					
+					 <input id="entrada"  class="tagator" name="tags-4"    data-role="tagsinput"  value="" data-tagator-show-all-options-on-focus="true" data-tagator-autocomplete="['Mobile',
+											'Desktop',
+											'VR', 'Virtual Reality',
+											'Web', 'E-commerce',
+											'Educational',
+											'Bank',
+											'TV','Angular','Javascript','Mongo','HTML', 
+											'Java','Rest', 'Spring',
+											'Android', 'RFID','Maven',
+											'Mysql','MVC',
+											'Event-based',
+											'Multi layer', 
+											'Client Server'] "><div class="col-sm-10"> <legend class="text-sm text-muted far "> Platform, Domain, Technology, and Architecture (e.g., angular, java, spring.)</legend></input></div>
+				</div>
+			<!--segunda coluna-->	
+				<div class="col-auto">	<legend class="col-form-label  ">Level:</legend>
+					<div class="row" style="display:none;" >
+						
+						<legend class="text-sm text-muted far ">Engineer:</legend>
+		
+							<div class="col-auto">
+									<span class="text-sm text-muted far ">Master:</span> 
+												
+										<select id="EngMast" class="form-select " aria-label="Default select example">
+													<option value="0"></option>
+													<option value="1">1</option>
+													
+										</select>
+							</div>
+							<div class="col-auto">
+										<span class="text-sm text-muted far ">Middle:</span> 
+														
+												<select id="EngMidd" class="form-select " aria-label="Default select example">
+															<option value="0"></option>
+															<option value="1">1</option>
+															
+												</select>
+							</div>
+							<div class="col-auto">
+												<span class="text-sm text-muted far ">Senior:</span> 
+														
+												<select id="EngSeni" class="form-select " aria-label="Default select example">
+															<option value="0"></option>
+															<option value="1">1</option>
+															
+												</select>
+							</div>
+							<div class="col-auto">
+												<span class="text-sm text-muted far ">Junior:</span> 
+														
+												<select  id="EngJuni" class="form-select " aria-label="Default select example">
+															<option value="0"></option>
+															<option value="1">1</option>
+															
+												</select>
+							</div>
+					</div>
+					<div class="row">
+									<legend class="col-form-label  "></legend>
+									<legend class="text-sm text-muted far ">Developer:</legend>
+		
+									<div class="col-auto">
+									<span class="text-sm text-muted far ">Master:</span> 
+												
+										<select id="DevMast" ="form-select " aria-label="Default select example">
+													<option value="0"></option>
+													<option value="1">1</option>
+													
+													
+										</select>
+									</div>
+									<div class="col-auto">
+									<span class="text-sm text-muted far ">Middle:</span> 
+												
+										<select id="DevMidd" class="form-select " aria-label="Default select example">
+													<option value="0"></option>
+													<option value="1">1</option>
+													
+													
+										</select>
+									</div>
+									<div class="col-auto">
+										<span class="text-sm text-muted far ">Senior:</span> 
+												
+										<select id="DevSeni" class="form-select " aria-label="Default select example">
+													<option value="0"></option>
+													<option value="1">1</option>
+													
+													
+										</select>
+									</div>
+									<div class="col-auto">
+										<span class="text-sm text-muted far ">Junior:</span> 
+												
+										<select id="DevJuni"  class="form-select " aria-label="Default select example">
+													<option value="0"></option>
+													<option value="1">1</option>
+													
+												
+										</select>
+									</div>
+					</div>
+					<div class="row"><legend class="col-form-label  "></legend><span class="text-sm text-muted far "></span> 
+					</div>
+				</div>
+	<!--terceira coluna-->
+		<div class="col">
+						<div class="row">
+								<span class="text-sm text-muted far "></span> 
+								<legend class="col-form-label">Type of grouping:</legend>
+						</div>
+		
+						<div class="row col-auto">
+			
+							<div class="col form-check form-check-inline">
+							  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+							  <label class="form-check-label" for="gridRadios1">
+								Homogeneous
+							  </label>
+							  </div>
+			  
+			  
+			
+						</div>
+						<div class="row col-auto">
+			
+			
+							  <div class="col form-check form-check-inline">
+									  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" >
+									  <label class="form-check-label" for="gridRadios1">
+										Heterogeneous
+									  </label>
+							  </div>
+			  
+			
+						</div>
+     
+						<div class="row">
+				
+							<div class="col">
+								<legend class="col-form-label  "></legend>
+								<button  type="submit" id="botao" class="btn btn-primary"   ><span class="glyphicon glyphicon-user" ></span> Form teams</button>
+							</div>
+				  
+						</div>		  
+		
+		
 	</div>
+	</div>   
+	</div> 
+</section> <!--fecha a linha do form-->   
+
+			<div class="row" id="sugestao1" style="display:none;">
+			
+				<div class="card card-primary">
+				
+					<div class="card-header">
+						
+						<h4 class="card-title">Suggestion #1</h4>
+						<div class="col">
+									<span id="percentual_equipe1" style="align: right; color:white;" class="porcentag">%</span>							
+								</div>
+					</div>
+				 <div  id="sugest1" class="card-body  col">
+					<div id="kiran"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_kiran" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Kiran </h3>
+							   <h4>Developer Master </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+
+					  <div id="fred"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_fred" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Fred </h3>
+							    <h4>Developer Middle </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Mobile </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="alice"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_alice" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Alice </h3>
+							    <h4>Developer Senior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Javascript </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="dave"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_dave" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Dave </h3>
+							    <h4>Developer Junior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Spring </p>
+								<p class="skill  btn-primary"> Angular </p>
+								<p class="skill  btn-primary"> Java </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					   
+					   <div id="bob"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_bob" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Bob B. </h3><br>
+							   <h4> Developer Master </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Spring </p>
+							</div>
+							
+						</div>
+					  </div>
+
+					  <div id="marcos"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_marcos" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Marcos </h3><br>
+							    <h4>Developer Middle </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Javascript </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="julia"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_julia" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar8.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Julia </h3><br>
+							    <h4>Developer Senior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Javascript </p>
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="nick"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_nick" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://i.pinimg.com/736x/59/74/d0/5974d04323d9efbaf170c72cfdb07b44.jpg" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Nick N. </h3><br>
+							    <h4>Developer Junior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Spring </p>
+								<p class="skill  btn-primary"> Angular </p>
+								<p class="skill  btn-primary"> MVC </p>
+							</div>
+							
+						</div>
+					  </div>
+					   
+					   
+					  
+					   
+				  </div>
+				</div>
+			</div>
+			
+			
+			<div class="row"id="sugestao2" style="display:none;">
+			
+				<div class="card card-primary">
+				
+					<div class="card-header">
+						
+						<h4 class="card-title">Suggestion #2</h4>
+						<div class="col">
+									<span id="percentual_equipe2" style="align: right; color:white;" class="porcentag">%</span>							
+								</div>
+					</div>
+				 <div  class="card-body   col" id="sugest2" >
+					<div id="kiran2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_kiran2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Kiran </h3>
+							   <h4>Developer Master </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+
+					  <div id="fred2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_fred2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Fred </h3>
+							    <h4>Developer Middle </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Mobile </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="alice2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_alice2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Alice </h3>
+							    <h4>Developer Senior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Javascript </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="dave2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_dave2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Dave </h3>
+							    <h4>Developer Junior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Spring </p>
+								<p class="skill  btn-primary"> Angular </p>
+								<p class="skill  btn-primary"> Java </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					   
+					   <div id="bob2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_bob2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Bob B.</h3><br>
+							   <h4> Developer Master </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> spring </p>
+							</div>
+							
+						</div>
+					  </div>
+
+					  <div id="marcos2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_marcos2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Marcos </h3><br>
+							    <h4>Developer Middle </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Javascript </p>
+								<p class="skill  btn-primary"> MVC </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="julia2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_julia2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://bootdey.com/img/Content/avatar/avatar8.png" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Julia </h3><br>
+							    <h4>Developer Senior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Javascript </p>
+								<p class="skill  btn-primary"> Java </p>
+								<p class="skill  btn-primary"> Web </p>
+							</div>
+							
+						</div>
+					  </div>
+					  
+					  <div id="nick2"   class="column" style="cursor:pointer; z-index: 1; display:none;">
+						<div class="card">
+							<div class="row" >	
+								
+								<div class="col">
+									<span id="percentual_nick2" style="align: right;" class="porcentag">%</span>							
+								</div>
+							</div>
+							<div class="row" style="justify-content: center;">
+										<img style="width: 40%" src="https://i.pinimg.com/736x/59/74/d0/5974d04323d9efbaf170c72cfdb07b44.jpg" class="rounded-circle img-thumbnail " alt="...">
+							</div>
+							<div class="row" style="justify-content: center;">
+							  <h3>Nick N. </h3><br>
+							    <h4>Developer Junior </h4>
+							</div>
+							<div class=row style="justify-content: center;">
+								<p class="skill  btn-primary"> Spring </p>
+								<p class="skill  btn-primary"> Angular </p>
+								<p class="skill  btn-primary"> MVC </p>
+							</div>
+							
+						</div>
+					  </div>
+					   
+					   
+					  
+					   
+				  </div>
+				</div>
+			</div>
+			
+			
+			
+</div>			
+
+	<textarea id="entradaa" type="search" placeholder="Search" Style="Display:none;" rows="4" col="50" ></textarea> 
 	
-	<script>
+	<div id="perc3"></div>
+	
+	<p id="ja"></p>
+	<p id="ang"></p>
+	<p id="arr"></p>
+	<p id="cont"></p>
+	<p id="tags"></p>
+	
+	
+	<div id="perc1"></div>
+    <div id="perc2"></div>
+	<div id="perc3"></div>
+	<div id="perc4"></div>
+
+
+
+
+
+
+<div class="content-wrapper" style="display:none" id="pg2">
+    <!-- Content Header (Page header) -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4 class="card-title">Project #1</h4>
+              </div>
+              <div class="card-body">
+			  <!-- Linha dos Master -->
+                <div class="row">
+				<div class="breadcrumb">suggestion
+						<!-- CARD 1 -->
+						<div id="kiran" class="card pt-2 pb-2 card-box col-sm-4 text-center col-sm-2 elevation-1 ">
+							<div class="member-card pt-2 pb-2"> <span id="percentual_kiran" class="porcentag">%</span>
+								<!-- Linha -->
+								<div class="row">
+										<img style="width: 50%" src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle img-thumbnail " alt="...">
+								</div>
+								<!-- Linha -->
+								 <div class="row">
+									<label>Fred</label>
+								 </div>
+								 <!-- Linha -->
+								 <div class="row">
+									<p class="text">Developer Master</p>
+								 </div>
+								<!-- Linha -->
+								<div class="row">
+									<button type="button" class=" btn  btn-primary  btn-rounded">JAVA </button>
+									<button type="button" class="btn btn-primary  btn-rounded waves-effect w-md waves-light">MVC </button>
+									<button type="button" class="btn btn-primary  btn-group btn-rounded ">ANGULAR </button>
+								</div>            
+							</div>
+					 	</div>
+						<!-- CARD 2 -->
+						<div id="kiran" class="card pt-2 pb-2 card-box col-sm-4 text-center col-sm-2 elevation-1 ">
+							<div class="member-card pt-2 pb-2"> <span id="percentual_kiran" class="porcentag">%</span>
+								<!-- Linha -->
+								<div class="row">
+										<img style="width: 50%" src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle img-thumbnail " alt="...">
+								</div>
+								<!-- Linha -->
+								 <div class="row">
+									<label>Fred</label>
+								 </div>
+								 <!-- Linha -->
+								 <div class="row">
+									<p class="text">Developer Master</p>
+								 </div>
+								<!-- Linha -->
+								<div class="row">
+									<button type="button" class=" btn  btn-primary  btn-rounded">JAVA </button>
+									<button type="button" class="btn btn-primary  btn-rounded waves-effect w-md waves-light">MVC </button>
+									<button type="button" class="btn btn-primary  btn-group btn-rounded ">ANGULAR </button>
+								</div>            
+							</div>
+					 	</div>
+						<!-- CARD 3 -->
+						<div id="kiran" class="card pt-2 pb-2 card-box col-sm-4 text-center col-sm-2 elevation-1 ">
+							<div class="member-card pt-2 pb-2"> <span id="percentual_kiran" class="porcentag">%</span>
+								<!-- Linha -->
+								<div class="row">
+										<img style="width: 50%" src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle img-thumbnail " alt="...">
+								</div>
+								<!-- Linha -->
+								 <div class="row">
+									<label>Fred</label>
+								 </div>
+								 <!-- Linha -->
+								 <div class="row">
+									<p class="text">Developer Master</p>
+								 </div>
+								<!-- Linha -->
+								<div class="row">
+									<button type="button" class=" btn  btn-primary  btn-rounded">JAVA </button>
+									<button type="button" class="btn btn-primary  btn-rounded waves-effect w-md waves-light">MVC </button>
+									<button type="button" class="btn btn-primary  btn-group btn-rounded ">ANGULAR </button>
+								</div>            
+							</div>
+					 	</div>
+						<!-- CARD 4 -->
+						
+					</div>
+                </div>
+				
+              </div>
+			  
+            </div>
+          
+		</div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+
+
+  <textarea id="txtdigitado" type="search" Style="Display:none;" placeholder="Search" rows="4" col="50" ></textarea> 
+	
+	
+ 
+
+
+
+<script>
 	/*
  Tagator jQuery Plugin
  A plugin to make input elements, tag holders
@@ -606,6 +3981,41 @@ $(function () {
 	});
 });
 
-	</script>
+</script>
+
+
+
+
+ 
+ 
+  
+ 
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="dist/js/adminlte.js"></script>
+<!-- Ekko Lightbox -->
+<script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<script src="../plugins/filterizr/jquery.filterizr.min.js"></script>
+
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
+  });
+</script>
+
+
 </body>
 </html>
