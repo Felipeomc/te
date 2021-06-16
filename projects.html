@@ -1,1 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Plus</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+   <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="../plugins/ekko-lightbox/ekko-lightbox.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Felipeomc/team/all.min.css">
+  <!-- IonIcons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Felipeomc/team/adminlte.min.css">
+ <link rel="stylesheet" href="simpleTimeline.css" />
+
+
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+  
+
+  <!-- Bootstrap -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="dist/js/adminlte.js"></script>
+<!-- Ekko Lightbox -->
+<script src="plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+
+<script src="../plugins/filterizr/jquery.filterizr.min.js"></script>
+
+  
+		
+
+		<script src="resize.js"></script>
+		<script src="simpleTimeline.js"></script>
+  <style>
+  
+  .btn-rounded {
+
+    border-radius: 0.2em;
+	font-size:16px;
+}
+			#timeline {
+				position: relative;
+				margin-top: 20px;
+				max-width: 100%;
+				overflow-x: auto;
+				overflow-y: hidden;
+				border: 1px solid dimgray;
+				box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
+			}
+			
+			#timeline .selected	{
+				font-weight: bold;
+				box-shadow: 0px 0px 3px 1px gray;
+			}
+			
+			#timeline-collapse {
+				top: 355px
+			}
+			
+			.styleA {
+				color: darkgreen;
+				background-color: lightgreen;
+			}
+			
+			.styleB {
+				color: darkred;
+				background-color: mistyrose;
+			}
+			
+			.styleC {
+				color: darkblue;
+				background-color: lightblue;
+			}
+			
+			.timeline-unused-phase {
+				background: repeating-linear-gradient(
+					-45deg,
+					rgba(255,255,255,0.85),
+					rgba(255,255,255,0.85) 10px,
+					rgba(235,235,235,0.85) 10px,
+					rgba(235,235,235,0.85) 20px
+				);
+			}
+			
+			/* NOTE: YOU MIGHT ALSO NEED TO ADAPT THE COLLAPSE/EXPAND TOGGLE POSITIONS IN simpleTimeline.css
+			
+			</style>
+			
+</head>
+<!--
+`body` tag options:
+
+  Apply one or more of the following classes to to the body tag
+  to get the desired effect
+
+  * sidebar-collapse
+  * sidebar-mini
+-->
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="../teamplus2.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="projects.html"  class="nav-link">Projects</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+       
+        <div class="navbar-search-block">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              
+            </div>
+          </form>
+        </div>
+      </li>
+
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+        </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+          <i class="fas fa-expand-arrows-alt"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="https://as1.ftcdn.net/jpg/02/18/23/06/500_F_218230681_UrFaxawyNMGAN6lRIAk99or1eT9VxMCI.jpg" alt=" Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Team Plus</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Adam (Manager)</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      
+	 
+      
+      
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+		<li class="nav-item">
+            <a href="people.html"  class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                People
+                
+              </p>
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a href="projects.html"  class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Projects
+               
+              </p>
+            </a>
+          </li>
+		  <li class="nav-item">
+            <a href="form.html" class="nav-link">
+              <span class="badge badge-info right">+</span>
+			  <i class="nav-icon fas fa-table"></i>
+              <p>
+               Form teams
+               
+              </p>
+            </a>
+          </li>
+         <!--  Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library  -->
+          <li class="nav-item menu-open">
+           <!--  <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-search fa-fw"></i>
+              <p>
+                Search tags
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>-->
+           <!-- <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a  class="nav-link">
+                  <i class="far  nav-icon"></i>
+					<p>Platform:</p>
+					<input id="form-tags-4" name="tags-4"   value="" data-role="tagsinput"><br>
+                </a>
+              </li>
+			  <li class="nav-item">
+                <a  class="nav-link">
+                  <i class="far  nav-icon"></i>
+					<p>Domain:</p>
+					<input id="form-tags-5" name="tags-5"   value="" data-role="tagsinput"><br>
+                </a>
+              </li>
+			  <li class="nav-item">
+                <a  class="nav-link">
+                  <i class="far nav-icon"></i>
+					<p>Technology:</p>
+					<input id="form-tags-6" name="tags-6"   value="" data-role="tagsinput"><br>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  <i class="far nav-icon"></i>
+					<p>Architecture:</p>
+					<input id="form-tags-7" name="tags-7"   value="" data-role="tagsinput"><br>
+                </a>
+              </li> 
+            </ul>-->
+          </li>
+         <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		  
+	
+
+          <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+          <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		 <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		 
+         <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+		
+         <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+         <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+          <li class="nav-item">
+            <a  class="nav-link">
+              <i class="nav-icon "></i>
+              <p>
+			
+				<i class="fas "></i>
+              </p>
+            </a>
+		</li>
+          
+         
+          
+          
+		  
+         
+          
+         
+         
+             
+          
+          
+          
+          
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  
+        <div class="row mb-2">
+          
+            <div class="col-12" id="paginacao" style="display:none">
+                <div class="text-right">
+                    <ul class="pagination pagination-split mt-0 float-right">
+                        
+                        <li class="page-item "><a class="page-link" id="um" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" id="dois" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link " id="tres" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" id="quatro" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" id="cinco" href="#">5</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+
+		  
+        </div>
+     <!-- /.container-fluid -->
+			
+ 
+
+    <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper" style="display:block"  id="pg1">
+    <!-- Content Header (Page header) -->
+    
+
+
+<section class="content-header" >
+      
+    </section>
+
+
+
+
+    <!-- Main content -->
+	
+	
+	
+    <section class="content">
+      
+       
+          
+          <div class="col-12 ">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4 class="card-title">Projects</h4>
+              </div>
+              <div >
+			  <!-- Linha dos Master -->
+                
+				<div class="card col-12" id="timeline"></div>
+		
+			
+			<ul>
+				
+				
+				<button class="btn btn-primary btn-rounded" href="#" id="opener" onclick="add_item()">Add an project</button>
+				<button class="btn btn-primary btn-rounded" href="#" onclick="remove_selected_item()">Remove an project</button>
+			</ul>
+				
+<div id="dialog" title="Dialog Title">I'm a dialog</div>
+
+<script>
+$( "#dialog" ).dialog({ autoOpen: false });
+
+</script>
+
+				
+				
+              </div>
+			  
+            </div>
+          </div>
+		  
+		  
+		  
+    
+    </section>
+    <!-- /.content -->
+  </div>
+
+  
+  
+</div>
+
+
+
+
+<script>
+
+			var timeline;
+			$(document).ready(timeline_init);
+			
+			function timeline_init() {
+			
+			
+			   
+				var options = {
+					phases: [
+						{ start: 2020, end: 2022, indicatorsEvery: 1, share: .3 },
+						{ start: 2022, end: 2023, indicatorsEvery: 1, share: .3, className: 'timeline-unused-phase' },
+						{ start: 2023, end: 2024, indicatorsEvery: 1, share: .3 }
+					],
+					//formatHeader: function (v) {
+						//if(v < 0) return -v + ' BC';
+						//if(v > 0) return v + ' AD';
+						//return 'AD';
+					//},					
+					barHeight: 36,
+					fontSize: 16
+				};
+				
+				// note: item 'Lonely' has a popup text attached
+				var data = [
+					[{ id: 'Project 1', start: 2020, end: 2021, className: 'styleB' , popup_html: '<b>Project 1:</b><br> Date begin: 01/01/2020 <br> Date end: 10/12/2022 <br> Team: Claud, Evelyn, Funny, Gregory <br> Tags: <div class="row" style="justify-content: center;"> <p class="skill  btn btn-primary btn-rounded"  style="font-size: 14px"> Java </p>&ensp; <p class="skill btn btn-primary btn-rounded" style="font-size: 14px"> MVC </p>&ensp; <p class="skill  btn btn-primary btn-rounded" style="font-size: 14px"> Spring </p>&ensp;  <p class="skill btn  btn-primary btn-rounded"style="font-size: 14px"> Maven </p>&ensp; <p class="skill  btn btn-primary btn-rounded"style="font-size: 14px"> Mongo </p>&ensp; </div> </div>  </div> '  },
+					 { id: 'Project 2', start: 2021, end: 2022, className: 'styleB' , popup_html: '<b>Project 2:</b><br> Date begin: 01/01/2020 <br> Date end: 10/12/2022 <br> Team: Claud, Evelyn, Funny, Gregory <br> Tags: <div class="row" style="justify-content: center;"> <p class="skill  btn btn-primary btn-rounded"  style="font-size: 14px"> Java </p>&ensp; <p class="skill btn btn-primary btn-rounded" style="font-size: 14px"> MVC </p>&ensp; <p class="skill  btn btn-primary btn-rounded" style="font-size: 14px"> Spring </p>&ensp;  <p class="skill btn  btn-primary btn-rounded"style="font-size: 14px"> Maven </p>&ensp; <p class="skill  btn btn-primary btn-rounded"style="font-size: 14px"> Mongo </p>&ensp; </div> </div>  </div> '  }],
+					 
+					
+					
+					
+					
+					[{ id: 'Project 3', start: 2020, end: 2022, className: 'styleC' , popup_html: '<b>Project 3:</b><br> Date begin: 01/01/2020 <br> Date end: 10/12/2022 <br> Team: Claud, Evelyn, Funny, Gregory <br> Tags: <div class="row" style="justify-content: center;"> <p class="skill  btn btn-primary btn-rounded"  style="font-size: 14px"> Java </p>&ensp; <p class="skill btn btn-primary btn-rounded" style="font-size: 14px"> MVC </p>&ensp; <p class="skill  btn btn-primary btn-rounded" style="font-size: 14px"> Spring </p>&ensp;  <p class="skill btn  btn-primary btn-rounded"style="font-size: 14px"> Maven </p>&ensp; <p class="skill  btn btn-primary btn-rounded"style="font-size: 14px"> Mongo </p>&ensp; </div> </div>  </div> '  }],
+					 
+					 [{ id: 'Project 4', start: 2021, end: 2023, className: 'styleA' , popup_html: '<b>Project 4:</b><br> Date begin: 01/07/2021 <br> Date end: 01/07/2023 <br> Team:   <a href="form.html" style="justify-content: center;">See suggestions</a>' }]
+					 
+					 
+				];
+				
+				timeline = $('#timeline');
+				timeline.simpleTimeline(options, data);				
+				timeline.on('timeline:barclick', timeline_clicked);
+			
+			
+			
+			
+			
+			}
+			
+
+
+			
+			function timeline_clicked(e) {
+				var clicked_item = $(e.target);
+				
+				var sel = $('.selected');
+				sel.removeClass('selected');
+				$('#clicked-item').empty();
+				
+				if(sel.length == 0 || sel.data('id') != clicked_item.data('id')) {
+					clicked_item.addClass('selected');
+					$('#clicked-item').text("You clicked " + clicked_item.data('id'));
+				}					
+			}
+			
+			function add_item() {
+				var data = timeline.getTimelineData();
+				var nome;
+				var nome = prompt("Enter project name:", nome);
+				var inicio = prompt("Enter start year:", inicio);
+				var fim = prompt("Enter end year:", fim);
+				data.push([
+					{
+						id:nome, 
+						start: inicio, 
+						end: fim, 
+						className: 'styleA', 
+						popup_html: '<b>'+nome+':</b><br> Date Begin:&ensp;'+ inicio+'<br>  Date end:&ensp;'+ fim+'<br> Team:&ensp;<a href="form.html" style="justify-content: center;">See suggestions</a>'
+					}
+				]);
+				timeline.setTimelineData(data).refreshTimeline();
+			}
+			
+			function remove_selected_item() {
+				var sel_item_id = $('.selected').data('id');
+				var data = timeline.getTimelineData();
+				for(var l = 0; l < data.length; l++) {
+					for(var i = 0; i < data[l].length; i++) {
+						if(data[l][i].id == sel_item_id) {
+							data[l].splice(i,1);
+							if(data[l].length == 0)
+								data.splice(l,1);
+							timeline.setTimelineData(data).refreshTimeline();
+							return;
+						}
+					}
+				}					
+			}
+			
+			function bind_popup() {
+				var sel_item_id = $('.selected').data('id');
+				if(typeof sel_item_id == 'undefined') {
+					alert('Ain\'t nothin\' selected, yo!');
+					return;
+				}
+				
+				timeline.bindPopup(sel_item_id, '<p><b>Yo it\'s great</b></p><p>Lorem ipsum dolizzle da bomb da bomb, consectetuer adipiscing elit. Nullam sapien velit, boom shackalack volutpizzle, suscipizzle daahng dawg, gravida vel, hizzle. Pellentesque go to hizzle tortor. Sed eros. Izzle at dolizzle dapibus turpis tempizzle gangster. Maurizzle fo shizzle my nizzle nibh et turpizzle. Owned in tortizzle. Pellentesque away rhoncizzle nizzle.</p><p>For sure bizzle massa go to hizzle shizzlin dizzle. Boom shackalack tellivizzle ipsum primis in crunk gangster luctizzle et stuff yo mamma izzle Break yo neck, yall; Nizzle sure. Pellentesque stuff check out this get down get down senectizzle et netizzle bow wow wow malesuada fizzle ac gangster egestas. Funky fresh tempor cool crackalackin. Fizzle erizzle mah nizzle.</p>');
+			}
+			
+			
+		
+   
+
+	
+
+		</script>
+
+
+
+
+
+
+</body>
+</html>
 
