@@ -7,7 +7,7 @@
 }
 
 .timeline-indicator-line {
-	position: absolute;
+	position:absolute;
 	border-left: 1px dashed dimgray;
 }
 
