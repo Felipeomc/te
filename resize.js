@@ -13,7 +13,7 @@
 
 // ====================================================================
 // found this at https://gist.github.com/Demwunz/2959289
-$.fn.extend({
+$.fn.extend( {
 	deferredResize: function(fn, delay){
 		var timer = null;
 		$(this).resize(function(){
