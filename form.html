@@ -33,7 +33,10 @@
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>-->
 
-
+<link rel="stylesheet" href="https://unpkg.com/balloon-css/balloon.min.css">
+<script>
+import 'balloon-css';
+</script>
 
 
 
@@ -3545,7 +3548,7 @@ $(document).ready(function() {
 						
 						<h4 class="card-title">Suggestion #1</h4>
 						<div class="col">
-									<span id="percentual_equipe1" style="align: right; " class="porcentag spanp">%</span>							
+									<span id="percentual_equipe1"  aria-label="PORC_TEAM=(PORC_DEV[1] + PORC_DEV[n])/QTD_DEV_SUGG1"  data-balloon-pos="left"  style="align: right; " class="porcentag spanp">%</span>							
 								</div>
 					</div>
 				 <div  id="sugest1" class="card-body  col">
@@ -3554,7 +3557,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_kiran" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_kiran" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3578,7 +3581,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_fred" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_fred" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3602,7 +3605,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_alice" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_alice" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3626,7 +3629,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_dave" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_dave" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3651,7 +3654,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_bob" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_bob" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3675,7 +3678,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_marcos" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_marcos" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3699,7 +3702,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_julia" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_julia" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3723,7 +3726,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_nick" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_nick" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3758,7 +3761,7 @@ $(document).ready(function() {
 						
 						<h4 class="card-title">Suggestion #2</h4>
 						<div class="col">
-									<span id="percentual_equipe2" style="align: right;" class="porcentag spanp">%</span>							
+									<span id="percentual_equipe2" aria-label="PORC_TEAM=(PORC_DEV[1] + PORC_DEV[n])/QTD_DEV_SUGG1"  data-balloon-pos="left"  style="align: right;" class="porcentag spanp">%</span>							
 								</div>
 					</div>
 				 <div  class="card-body   col" id="sugest2" >
@@ -3767,7 +3770,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_kiran2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_kiran2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3791,7 +3794,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_fred2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_fred2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3815,7 +3818,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_alice2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_alice2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3839,7 +3842,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_dave2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_dave2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3864,7 +3867,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_bob2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_bob2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3888,7 +3891,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_marcos2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_marcos2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3912,7 +3915,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_julia2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_julia2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
@@ -3936,7 +3939,7 @@ $(document).ready(function() {
 							<div class="row" >	
 								
 								<div class="col">
-									<span id="percentual_nick2" style="align: right;" class="porcentag">%</span>							
+									<span id="percentual_nick2" aria-label="PERC_DEV[n] = (NUMBER_TAGS_DEV[n]*100)/QTD_TAGS_INPUT" data-balloon-pos="up"  style="align: right;" class="porcentag">%</span>							
 								</div>
 							</div>
 							<div class="row" style="justify-content: center;">
