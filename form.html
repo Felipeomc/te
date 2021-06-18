@@ -1269,15 +1269,15 @@ $(document).ready(function() {
 							}
 							
 							if ((equipe2[i]=='marcos') && (marcospode==1)){
-								$("#marcos2").css("display", "block");$("#percentual_equipe2").css("background-color", "white"); 
+								$("#marcos2").css("display", "block");
 							}
 							
 							if ((equipe2[i]=='julia') && (juliapode==1)){
-								$("#julia2").css("display", "block");$("#percentual_equipe2").css("background-color", "white"); 
+								$("#julia2").css("display", "block");
 							}
 							
 							if ((equipe2[i]=='nick') && (nickpode==1)){
-								$("#nick2").css("display", "block");$("#percentual_equipe2").css("background-color", "white"); 
+								$("#nick2").css("display", "block");
 							}
 					
 					}
@@ -1329,15 +1329,15 @@ $(document).ready(function() {
 					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
 					if ((porcentagem_sugestao2>49) && (porcentagem_sugestao2<69)){
 							$("#percentual_equipe2").css("color", "orange");
-						$("#percentual_equipe2").css("background-color", "white"); 
+						
 					}
 					if (porcentagem_sugestao2>69){
 							$("#percentual_equipe2").css("color", "green");
-						$("#percentual_equipe2").css("background-color", "white"); 
+						
 					}
 					if (porcentagem_sugestao2<49){
 							$("#percentual_equipe2").css("color", "red");
-						$("#percentual_equipe2").css("background-color", "white"); 
+						
 					}
 					
 				
@@ -2896,7 +2896,8 @@ $(document).ready(function() {
 						
 						<h4 class="card-title">Suggestion #1</h4>
 						<div class="col">
-									<span id="percentual_equipe1" style="align: right; color:white;" class="porcentag">%</span>							
+									<span id="percentual_equipe1" style="align: right; color:white; -webkit-text-stroke-width: 2px;
+-webkit-text-stroke-color: #000;" class="porcentag">%</span>							
 								</div>
 					</div>
 				 <div  id="sugest1" class="card-body  col">
