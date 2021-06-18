@@ -1232,7 +1232,16 @@ $(document).ready(function() {
 					porcentagem_sugestao1 = parseFloat(porcentagem_sugestao1.toFixed(1));
 					
 					$("#percentual_equipe1").html(porcentagem_sugestao1+'%');
-						
+					
+					if ((porcentagem_sugestao1>49) && (porcentagem_sugestao1<69)){
+							$("#percentual_equipe1").css("color", "orange");
+					}
+					if (porcentagem_sugestao1>69){
+							$("#percentual_equipe1").css("color", "green");
+					}
+					if (porcentagem_sugestao1<49){
+							$("#percentual_equipe1").css("color", "red");
+					}	
 					
 					
 					for ( var i=0 ; i <= equipe2.length; i++){
@@ -1318,7 +1327,15 @@ $(document).ready(function() {
 					porcentagem_sugestao2 = parseFloat(porcentagem_sugestao2.toFixed(1));
 					
 					$("#percentual_equipe2").html(porcentagem_sugestao2+'%');
-						
+					if ((porcentagem_sugestao2>49) && (porcentagem_sugestao2<69)){
+							$("#percentual_equipe2").css("color", "orange");
+					}
+					if (porcentagem_sugestao2>69){
+							$("#percentual_equipe2").css("color", "green");
+					}
+					if (porcentagem_sugestao2<49){
+							$("#percentual_equipe2").css("color", "red");
+					}
 					
 				
 					
