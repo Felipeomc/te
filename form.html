@@ -43,16 +43,40 @@ import 'balloon-css';
 
 
 <style>
-.spanp{
 	
-	border-radius: 30%; 
-	border: none;  
-	color:white;  
-	padding: 5px;   
-	font-size: 16px; 
-	margin: 2px 2px; 
+.tooltipe {
+    width:350px;
+    height:60px;
+    padding:5px;
+    border:1px solid #ccc;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.3);
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    position:absolute;
+    font-size:12px;
+    right:60px;
+	top:-20px;
+    display:none;
 	cursor: pointer;
-	
+			background-color: #556270;
+}
+.tooltipe2 {
+    width:340px;
+    height:60px;
+    padding:5px;
+    border:1px solid #ccc;
+    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.3);
+    border-radius:3px;
+    -webkit-border-radius:3px;
+    position:absolute;
+    font-size:12px;
+    top:-80px;
+    display:none;
+	cursor: pointer;
+	background-color: #556270;
+		
 }
 .tagsinput {
 	display: -webkit-box;
@@ -286,7 +310,18 @@ body {
   
   
 </head>
-
+<script>
+$(function(){
+    $('.tipe').hover(
+        function(){
+            $(this).next().show();
+        },
+        function(){
+            $(this).next().hide();   
+        }
+    )   
+})
+</script>
 <body class="hold-transition sidebar-mini">
 
 
@@ -3548,7 +3583,7 @@ $(document).ready(function() {
 						
 						<h4 class="card-title">Suggestion #1</h4>
 						<div class="col">
-									<span id="percentual_equipe1"  aria-label="percentage = sum of the percentages of developers / number of developers from suggestion #1"  data-balloon-pos="left"  style="align: right; " class="porcentag spanp">%</span>							
+									<span id="percentual_equipe1" style="color:white; cursor: pointer;" class="porcentag tipe">%</span><div  class="tooltipe btn-primary" >$$percentage = {{sum\,\,of\,\,the\,\,percentages\,\,of\,\,developers } \over\,\,number\,\,of\,\,developers\,\,from \,\,suggestion}.$$</div>							
 								</div>
 					</div>
 				 <div  id="sugest1" class="card-body  col">
