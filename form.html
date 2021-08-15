@@ -980,15 +980,15 @@ $(document).ready(function() {
 					$("#percentual_nick").html(porcentagem_nick+'%');
 					$("#percentual_nick2").html(porcentagem_nick+'%');
 					
-					if ((porcentagem_nick>39) && (porcentagem_nick<50)){
-							$("#percentual_nick").css("color", "#eead2d");
-					}
-					if (porcentagem_nick>69){
-						$("#percentual_nick").css("color", "#008000");
-						}
-					if (porcentagem_nick<40){
-						$("#percentual_nick").css("color", "#ae0000");
-					}
+					//if ((porcentagem_nick>39) && (porcentagem_nick<50)){
+					//		$("#percentual_nick").css("color", "#eead2d");
+					//}
+					//if (porcentagem_nick>69){
+					//	$("#percentual_nick").css("color", "#008000");
+					//	}
+					//if (porcentagem_nick<40){
+					//	$("#percentual_nick").css("color", "#ae0000");
+					//}
 					
 					
 					
@@ -1104,96 +1104,328 @@ $(document).ready(function() {
 					//alert("tamnho é: "+tamanho);
 					
 					
-					
-					
+					//correcao feita em 12/08: apenas 1 master por equipe
+					var mas=0;
 					if ((porcentagem_kiran>0) && (kiranpode==1)){
+						
+						if ( porcentagem_kiran > porcentagem_bob ){
 							equipe1.push("kiran");
 							porc_equipe1.push(porcentagem_kiran);
-					}
-					if ((porcentagem_fred>0) && (fredpode==1)){
-							equipe1.push("fred");
-							porc_equipe1.push(porcentagem_fred);
-					}	
-					if ((porcentagem_alice>0) && (alicepode==1)){
-							equipe1.push("alice");
-							porc_equipe1.push(porcentagem_alice);
-					}	
-					if ((porcentagem_dave>0) && (davepode==1)){
-							equipe1.push("dave");
-							porc_equipe1.push(porcentagem_dave);
-					}
-					
-					
-					
-					
-					if ((porcentagem_bob>0) && (bobpode==1)){
-							equipe1.push("bob");
-							porc_equipe1.push(porcentagem_bob);
-					}
-					if ((porcentagem_marcos>0) && (marcospode==1)){
-							equipe1.push("marcos");
-							porc_equipe1.push(porcentagem_marcos);
-					}	
-					if ((porcentagem_julia>0) && (juliapode==1)){
-							equipe1.push("julia");
-							porc_equipe1.push(porcentagem_julia);
-					}	
-					if ((porcentagem_nick>0) && (nickpode==1)){
-							equipe1.push("nick");
-							porc_equipe1.push(porcentagem_nick);
-					}
-					
-					
-			
-					
-					var aux=0;
-					var pessoa=0;
-					
-					for (var i=0; i<porc_equipe1.length; i++){
+							
+						}
+						if ( porcentagem_kiran < porcentagem_bob ) {
 						
-						for (var j=0; j<porc_equipe1.length; j++){
-							
-							if ((porc_equipe1[i] > porc_equipe1[j])){
-							
+							equipe2.push("kiran");
+							porc_equipe2.push(porcentagem_kiran);
+													
+						}
+						if ( porcentagem_kiran == porcentagem_bob ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
 								
-								aux = porc_equipe1[j];
-								pessoa = equipe1[j];
+								if ((equipe1[i] =='bob')){
+									mas=1;
+								}
 								
-								porc_equipe1[j] = porc_equipe1[i];
-								equipe1[j] = equipe1[i];
+							}
+							if (mas==0){
+								equipe1.push("kiran");
+								porc_equipe1.push(porcentagem_kiran);
 								
-								porc_equipe1[i] = aux;
-								equipe1[i] = pessoa;
-								
-								
-								
-								
-							}	
-								
+							}
+							if (mas==1){
+								equipe2.push("kiran");
+								porc_equipe2.push(porcentagem_kiran);
+							}
 							
 							
 						}
-						
-						
+					
 					}
+					mas=0;
+					if ((porcentagem_bob>0) && (bobpode==1)){
+						
+						if ( porcentagem_bob > porcentagem_kiran ){
+							equipe1.push("bob");
+							porc_equipe1.push(porcentagem_bob);
+							
+						}
+						if ( porcentagem_bob < porcentagem_kiran ) {
+						
+							equipe2.push("bob");
+							porc_equipe2.push(porcentagem_bob);
+													
+						}		
+					
+						if ( porcentagem_bob == porcentagem_kiran ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='kiran')){
+									mas=1;
+								}
+								
+							}
+							if (mas==0){
+								equipe1.push("bob");
+								porc_equipe1.push(porcentagem_bob);
+								
+							}
+							if (mas==1){
+								equipe2.push("bob");
+								porc_equipe2.push(porcentagem_bob);
+							}
+						}
+					}
+					var mid=0;
+					//correcao feita em 12/08: apenas 1 middle  por equipe
+					if ((porcentagem_fred>0) && (fredpode==1)){
+						
+						if ( porcentagem_fred > porcentagem_marcos ){
+							equipe1.push("fred");
+							porc_equipe1.push(porcentagem_fred);
+							
+						}
+						if ( porcentagem_fred < porcentagem_marcos ) {
+						
+							equipe2.push("fred");
+							porc_equipe2.push(porcentagem_fred);
+													
+						}
+						if ( porcentagem_fred == porcentagem_marcos ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='marcos')){
+									mid=1;
+								}
+								
+							}
+							if (mid==0){
+								equipe1.push("fred");
+								porc_equipe1.push(porcentagem_fred);
+								
+							}
+							if (mid==1){
+								equipe2.push("fred");
+								porc_equipe2.push(porcentagem_fred);
+							}
+						}
+					
+					}
+					
+					mid=0;
+					if ((porcentagem_marcos>0) && (marcospode==1)){
+						
+						if ( porcentagem_marcos > porcentagem_fred ){
+							equipe1.push("marcos");
+							porc_equipe1.push(porcentagem_marcos);
+							
+						}
+						if ( porcentagem_marcos < porcentagem_fred ) {
+						
+							equipe2.push("marcos");
+							porc_equipe2.push(porcentagem_marcos);
+													
+						}		
+					
+						if ( porcentagem_marcos == porcentagem_fred ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='fred')){
+									mid=1;
+								}
+								
+							}
+							if (mid==0){
+								equipe1.push("marcos");
+								porc_equipe1.push(porcentagem_marcos);
+								
+							}
+							if (mid==1){
+								equipe2.push("marcos");
+								porc_equipe2.push(porcentagem_marcos);
+							}
+						}
+					}
+					var sen=0;
+					//correcao feita em 12/08: apenas 1 senior  por equipe
+					if ((porcentagem_alice>0) && (alicepode==1)){
+						
+						if ( porcentagem_alice > porcentagem_julia ){
+							equipe1.push("alice");
+							porc_equipe1.push(porcentagem_alice);
+							
+						}
+						if ( porcentagem_alice < porcentagem_julia ) {
+						
+							equipe2.push("alice");
+							porc_equipe2.push(porcentagem_alice);
+													
+						}
+						if ( porcentagem_alice == porcentagem_julia ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='julia')){
+									sen=1;
+								}
+								
+							}
+							if (sen==0){
+								equipe1.push("alice");
+								porc_equipe1.push(porcentagem_alice);
+								
+							}
+							if (sen==1){
+								equipe2.push("alice");
+								porc_equipe2.push(porcentagem_alice);
+							}
+						}
+					
+					}
+					sen=0;
+					if ((porcentagem_julia>0) && (juliapode==1)){
+						
+						if ( porcentagem_julia > porcentagem_alice ){
+							equipe1.push("julia");
+							porc_equipe1.push(porcentagem_julia);
+							
+						}
+						if ( porcentagem_julia < porcentagem_alice ) {
+						
+							equipe2.push("julia");
+							porc_equipe2.push(porcentagem_julia);
+													
+						}		
+					
+						if ( porcentagem_julia == porcentagem_alice ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='alice')){
+									sen=1;
+								}
+								
+							}
+							if (sen==0){
+								equipe1.push("julia");
+								porc_equipe1.push(porcentagem_julia);
+								
+							}
+							if (sen==1){
+								equipe2.push("julia");
+								porc_equipe2.push(porcentagem_julia);
+							}
+						}
+					}
+					
+					var jun=0;
+					//correcao feita em 12/08: apenas 1 senior  por equipe
+					if ((porcentagem_dave>0) && (davepode==1)){
+						
+						if ( porcentagem_dave > porcentagem_nick ){
+							equipe1.push("dave");
+							porc_equipe1.push(porcentagem_dave);
+							
+						}
+						if ( porcentagem_dave < porcentagem_nick ) {
+						
+							equipe2.push("dave");
+							porc_equipe2.push(porcentagem_dave);
+													
+						}
+						if ( porcentagem_dave == porcentagem_nick ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='nick')){
+									jun=1;
+								}
+								
+							}
+							if (jun==0){
+								equipe1.push("dave");
+								porc_equipe1.push(porcentagem_dave);
+								
+							}
+							if (jun==1){
+								equipe2.push("dave");
+								porc_equipe2.push(porcentagem_dave);
+							}
+						}
+					
+					}
+					jun=0;
+					if ((porcentagem_nick>0) && (nickpode==1)){
+						
+						if ( porcentagem_nick > porcentagem_dave ){
+							equipe1.push("nick");
+							porc_equipe1.push(porcentagem_nick);
+							
+						}
+						if ( porcentagem_nick < porcentagem_dave ) {
+						
+							equipe2.push("nick");
+							porc_equipe2.push(porcentagem_nick);
+													
+						}		
+					
+						if ( porcentagem_nick == porcentagem_dave ) {
+							for ( var i=0 ; i <= equipe1.length; i++){
+								
+								if ((equipe1[i] =='dave')){
+									jun=1;
+								}
+								
+							}
+							if (jun==0){
+								equipe1.push("nick");
+								porc_equipe1.push(porcentagem_nick);
+								
+							}
+							if (jun==1){
+								equipe2.push("nick");
+								porc_equipe2.push(porcentagem_nick);
+							}
+						}
+					}
+					
+					//var aux=0;
+					//var pessoa=0;
+					
+					//for (var i=0; i<porc_equipe1.length; i++){
+						
+						//for (var j=0; j<porc_equipe1.length; j++){
+							
+							//if ((porc_equipe1[i] > porc_equipe1[j])  ){
+							
+								
+								//aux = porc_equipe1[j];
+								//pessoa = equipe1[j];
+								
+								//porc_equipe1[j] = porc_equipe1[i];
+								//equipe1[j] = equipe1[i];
+								
+								//porc_equipe1[i] = aux;
+								//equipe1[i] = pessoa;	
+							//}	
+						//}	
+					//}
 					//alert("equipe 1 antes: "+equipe1);
 					//alert("equipe 2 antes: "+equipe2);
+					
+					
 					<!--coloca o extra do tamanho na na equipe 2-->
 					
-					var auxi=0;
-					auxi=equipe1.length - tamanho;
+					//var auxi=0;
+					//auxi= equipe1.length - tamanho;
 					//alert("auxi: "+auxi);
 					
-					for (var j=0; j<auxi; j++){
+					//for (var j=0; j<auxi; j++){
 						
 						
-						equipe2[j] = equipe1[tamanho];
-						porc_equipe2[j] = porc_equipe1[tamanho];
+					//	equipe2[j] = equipe1[tamanho];
+					//	porc_equipe2[j] = porc_equipe1[tamanho];
+					//	
+					//	equipe1.splice(tamanho, 1);
+					//	porc_equipe1.splice(tamanho, 1);
 						
-						equipe1.splice(tamanho, 1);
-						porc_equipe1.splice(tamanho, 1);
-						
-					}
+					//}
 					
 					//alert("equipe 1: "+equipe1);
 					//alert("equipe 2: "+equipe2);
