@@ -25,7 +25,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		
-
+<script language="JavaScript" src="projetos.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -199,6 +199,7 @@
 	color: #ccc;
 	opacity: 1.0;
 }
+
 
 
 
@@ -589,14 +590,14 @@ $(function(){
 
 <script>
 
-
+$(document).ready(timeline_init);
 
 $(document).ready(function() {
 
 
 
 
-
+				var ig;
 
 
 
@@ -645,6 +646,12 @@ $(document).ready(function() {
 					
 				
 				$( "#botao" ).click(function() {
+						
+						
+
+
+						
+						
 						
 						 $("#kiran").animate({
 								top:"0",
@@ -721,7 +728,7 @@ $(document).ready(function() {
 				equipe2 = [];
 				porc_equipe2 = [];
 				
-						var ig = $('#entrada').val();
+						 ig = $('#entrada').val();
 						alert("Tags: "+ig);
 						$('#txtdigitado').val(ig+' \n');
 						
@@ -1637,9 +1644,18 @@ $(document).ready(function() {
 					
 					$("#sugestao1").css("display", "block");
 					$("#sugestao2").css("display", "block");
+					
+					
+					
+					
 				});		
-				
-
+				$( "#salvarequipe" ).click(function() {	
+						
+						localStorage.setItem('valueTexto', equipe1);
+						localStorage.setItem('valueText', ig);
+						
+						
+				});
 		
 		
 		
@@ -3638,6 +3654,7 @@ $(document).ready(function() {
 			 });
 		
 		
+			 
 		
 			
 });
@@ -3812,11 +3829,19 @@ $(document).ready(function() {
 					<div class="card-header">
 						
 						<h4 class="card-title">Suggestion #1</h4>
-						<div class="col">
+						
+						
+							
+					
+						<div class="col">	
+						<button  type="submit" id="salvarequipe" class="btn btn-primary" onclick="add_item()"  ><span class="glyphicon "></span> save team</button>
+						
 									<span id="percentual_equipe1" style="color:white; font-weight: bold; cursor: pointer;" class="porcentag tipe">%</span><div  class="tooltipe btn-primary" >$$percentage = {{sum\,\,of\,\,the\,\,percentages\,\,of\,\,developers } \over\,\,number\,\,of\,\,developers\,\,from \,\,suggestion}.$$</div>							
 								</div>
 					</div>
 				 <div  id="sugest1" class="card-body  col">
+				 
+								
 					<div id="kiran"   class="column" style="cursor:pointer; z-index: 1; display:none;">
 						<div class="card">
 							<div class="row" >	
@@ -4365,6 +4390,8 @@ $(document).ready(function() {
 
 
 <script>
+
+		
 	/*
  Tagator jQuery Plugin
  A plugin to make input elements, tag holders
@@ -4393,7 +4420,14 @@ $(document).ready(function() {
  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
+
+
+
+
 (function ($) {
+
+
 	$.tagator = function (source_element, options) {
 		var defaults = {
 			prefix:                'tagator_',
